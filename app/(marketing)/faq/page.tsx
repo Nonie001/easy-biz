@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button, Card } from "@/components/ui";
-import { FAQAccordion } from "./faq-accordion";
 
 export const metadata: Metadata = {
   title: "คำถามที่พบบ่อย | Easy Biz",
