@@ -1,10 +1,7 @@
-"use client";
-
 import { Metadata } from "next";
-import { ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
 import Link from "next/link";
 import { Button, Card } from "@/components/ui";
+import { FAQAccordion } from "./faq-accordion";
 
 export const metadata: Metadata = {
   title: "คำถามที่พบบ่อย | Easy Biz",
@@ -121,27 +118,20 @@ const faqs = [
 ];
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <div className="border-b border-neutral-200">
-      <button
-        className="flex w-full items-center justify-between py-4 text-left"
-        onClick={() => setIsOpen(!isOpen)}
-      >
+    <details className="border-b border-neutral-200">
+      <summary className="flex w-full items-center justify-between py-4 text-left cursor-pointer hover:text-neutral-700">
         <span className="font-medium text-neutral-900">{question}</span>
-        {isOpen ? (
-          <ChevronUp className="h-5 w-5 text-neutral-600" />
-        ) : (
-          <ChevronDown className="h-5 w-5 text-neutral-600" />
-        )}
-      </button>
-      {isOpen && (
-        <div className="pb-4 text-neutral-600">
-          <p>{answer}</p>
-        </div>
-      )}
-    </div>
+        <span className="ml-6 flex-shrink-0 text-neutral-600">
+          <svg className="h-5 w-5 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </span>
+      </summary>
+      <div className="pb-4 text-neutral-600">
+        <p>{answer}</p>
+      </div>
+    </details>
   );
 }
 
