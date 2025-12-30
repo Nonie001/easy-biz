@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ระบบพร้อมใช้ Easy Biz
 
-## Getting Started
+เว็บไซต์รับทำระบบและดูแลครบวงจร: เว็บไซต์, POS, คลังสินค้า, หน่วยงาน, โรงเรียน — ทั้งแบบขายขาดและดูแลรายเดือน
 
-First, run the development server:
+## 🚀 เทคโนโลยีที่ใช้
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Database:** PostgreSQL + Prisma ORM
+- **Authentication:** NextAuth.js
+- **Forms:** React Hook Form + Zod
+- **Icons:** Lucide React
+- **Testing:** Playwright (E2E)
+
+## 📁 โครงสร้างโปรเจค
+
+```
+easy-biz/
+├── app/
+│   ├── (marketing)/     # หน้าเว็บสาธารณะ
+│   │   ├── services/    # บริการ
+│   │   ├── pricing/     # ราคา
+│   │   ├── portfolio/   # ผลงาน
+│   │   ├── blog/        # บทความ
+│   │   └── contact/     # ติดต่อ
+│   ├── (dashboard)/     # แดชบอร์ดแอดมิน
+│   │   ├── dashboard/
+│   │   ├── leads/
+│   │   ├── orders/
+│   │   └── cms/
+│   └── api/             # API Routes
+├── components/
+│   ├── ui/              # UI Components (Button, Input, Card)
+│   └── sections/        # Page Sections (Hero, Features)
+├── features/            # Business Logic
+│   ├── lead/
+│   └── pricing/
+├── services/            # External Services
+│   ├── email.ts
+│   ├── crm.ts
+│   └── payment.ts
+├── lib/                 # Utilities
+├── prisma/              # Database Schema
+├── types/               # TypeScript Types
+└── e2e/                 # E2E Tests
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ การติดตั้ง
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Clone repository
+git clone <repo-url>
+cd easy-biz
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# ติดตั้ง dependencies
+npm install
 
-## Learn More
+# ตั้งค่า environment variables
+cp .env.example .env.local
+# แก้ไขค่าใน .env.local
 
-To learn more about Next.js, take a look at the following resources:
+# ตั้งค่า database
+npx prisma generate
+npx prisma db push
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# รัน development server
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+เปิด [http://localhost:3000](http://localhost:3000) เพื่อดูผลลัพธ์
 
-## Deploy on Vercel
+## 📝 Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+ดูตัวอย่างใน `.env.example`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧪 การทดสอบ
+
+```bash
+# E2E tests
+npx playwright test
+
+# E2E tests with UI
+npx playwright test --ui
+```
+
+## 🚀 การ Deploy
+
+```bash
+# Build
+npm run build
+
+# Start production server
+npm start
+```
+
+แนะนำ Deploy บน [Vercel](https://vercel.com) สำหรับ Next.js
+
+## 📞 ติดต่อ
+
+- Email: contact@easybiz.co.th
+- Line: @easybiz

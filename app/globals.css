@@ -3,24 +3,75 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-primary: #facc15;
+  --color-primary-dark: #eab308;
+  --color-primary-light: #fef08a;
+  --color-muted: #737373;
+  --color-border: #e5e5e5;
+  --font-prompt: "Prompt", sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-prompt);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color - Yellow theme */
+::selection {
+  background-color: #facc15;
+  color: #171717;
+}
+
+/* Custom Utility Classes */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-yellow-400 px-6 py-3 font-semibold text-neutral-900 transition-all hover:bg-yellow-500 hover:shadow-lg active:scale-95;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border-2 border-neutral-900 px-6 py-3 font-semibold text-neutral-900 transition-all hover:bg-neutral-900 hover:text-white active:scale-95;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium text-neutral-700 transition-all hover:bg-neutral-100;
+}
+
+.card {
+  @apply rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition-all hover:shadow-md;
+}
+
+.card-highlight {
+  @apply rounded-2xl border-2 border-yellow-400 bg-white p-6 shadow-lg;
+}
+
+.section-padding {
+  @apply px-4 py-16 md:px-6 lg:px-8 lg:py-24;
+}
+
+.container-custom {
+  @apply mx-auto max-w-7xl;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent;
+}
+
+.input-field {
+  @apply w-full rounded-lg border border-neutral-300 px-4 py-3 text-neutral-900 placeholder:text-neutral-400 focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400/20 transition-all;
+}
+
+.label-field {
+  @apply block text-sm font-medium text-neutral-700 mb-1.5;
 }
