@@ -305,6 +305,7 @@ export default function BlogPostPage({ params }: Props) {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
