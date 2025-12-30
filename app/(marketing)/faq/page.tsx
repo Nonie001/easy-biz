@@ -1,12 +1,13 @@
-import { Metadata } from "next";
+import { generateSEO, generateStructuredData } from "@/lib/seo";
 import Link from "next/link";
 import { Button, Card } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "คำถามที่พบบ่อย | Easy Biz",
-  description:
-    "คำตอบสำหรับคำถามที่ลูกค้าสอบถามบ่อยเกี่ยวกับการพัฒนาระบบและบริการของเรา",
-};
+export const metadata = generateSEO({
+  title: "คำถามที่พบบ่อย",
+  description: "คำตอบสำหรับคำถามที่ลูกค้าสอบถามบ่อยเกี่ยวกับการพัฒนาระบบและบริการของเรา",
+  path: "/faq",
+  tags: ["FAQ", "คำถาม", "บริการ"],
+});
 
 const faqs = [
   {
@@ -135,8 +136,29 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export default function FAQPage() {
+  // Generate FAQ structured data
+  const faqStructuredData = generateStructuredData({
+    type: "faq",
+    name: "คำถามที่พบบ่อย - Easy Biz",
+    description: "รวมคำตอบสำหรับคำถามที่ลูกค้าสอบถามบ่อย",
+    url: "https://easybiz.vercel.app/faq",
+    faq: faqs.flatMap((category) => 
+      category.questions.map((q) => ({
+        question: q.q,
+        answer: q.a,
+      }))
+    ),
+  });
+
   return (
-    <div className="px-4 py-16 md:px-6 lg:py-24">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData),
+        }}
+      />
+      <div className="px-4 py-16 md:px-6 lg:py-24">
       <div className="mx-auto max-w-4xl">
         {/* Header */}
         <div className="text-center">

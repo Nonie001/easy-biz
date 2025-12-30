@@ -1,14 +1,15 @@
-import { Metadata } from "next";
+import { generateSEO } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { Users, Target, Award, Heart, ArrowRight } from "lucide-react";
 import { Button, Card } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "เกี่ยวกับเรา | Easy Biz",
-  description:
-    "ทีมพัฒนาระบบมืออาชีพ พร้อมดูแลธุรกิจของคุณให้เติบโตด้วยเทคโนโลยี",
-};
+export const metadata = generateSEO({
+  title: "เกี่ยวกับเรา",
+  description: "ทีมพัฒนาระบบมืออาชีพ พร้อมดูแลธุรกิจของคุณให้เติบโตด้วยเทคโนโลยี",
+  path: "/about",
+  tags: ["เกี่ยวกับ", "ทีมงาน", "ประสบการณ์"],
+});
 
 const stats = [
   { label: "ปีประสบการณ์", value: "5+" },

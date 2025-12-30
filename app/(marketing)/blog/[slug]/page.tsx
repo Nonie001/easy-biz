@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import { generateSEO, generateStructuredData } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -113,27 +113,23 @@ type Props = {
   params: { slug: string };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props) {
   const post = blogPosts.find(post => post.slug === params.slug);
   
   if (!post) {
-    return {
-      title: "ไม่พบบทความ | Easy Biz",
-    };
+    return generateSEO({ title: "ไม่พบบทความ" });
   }
 
-  return {
-    title: `${post.title} | Easy Biz Blog`,
+  return generateSEO({
+    title: post.title,
     description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      images: [post.image],
-      type: 'article',
-      publishedTime: post.publishDate,
-      authors: [post.author],
-    },
-  };
+    path: `/blog/${post.slug}`,
+    type: "article",
+    publishedTime: post.publishDate,
+    author: post.author,
+    tags: post.tags,
+    image: post.image,
+  });
 }
 
 export default function BlogPostPage({ params }: Props) {
@@ -143,8 +139,27 @@ export default function BlogPostPage({ params }: Props) {
     notFound();
   }
 
+  // Generate article structured data
+  const articleStructuredData = generateStructuredData({
+    type: "article",
+    name: post.title,
+    description: post.excerpt,
+    url: `https://easybiz.vercel.app/blog/${post.slug}`,
+    image: post.image,
+    author: post.author,
+    publishDate: post.publishDate,
+    modifiedDate: post.publishDate,
+  });
+
   return (
-    <div className="px-4 py-16 md:px-6 lg:py-24">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleStructuredData),
+        }}
+      />
+      <div className="px-4 py-16 md:px-6 lg:py-24">
       <div className="mx-auto max-w-4xl">
         {/* Breadcrumb */}
         <div className="mb-8">
