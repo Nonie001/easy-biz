@@ -95,13 +95,22 @@ export function Hero() {
             </div>
 
             {/* Stats */}
-            <div className="mt-10 flex justify-center gap-8 border-t border-neutral-200 pt-8 lg:justify-start">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center lg:text-left">
-                  <div className="text-2xl font-bold text-yellow-500 md:text-3xl">{stat.value}</div>
-                  <div className="mt-1 text-sm text-neutral-500">{stat.label}</div>
-                </div>
-              ))}
+            <div className="mt-10 border-t border-neutral-200 pt-8">
+              <div className="flex flex-wrap items-start justify-center gap-6 sm:gap-8 lg:justify-start lg:divide-x lg:divide-neutral-200">
+                {stats.map((stat, i) => (
+                  <div
+                    key={stat.label}
+                    className="px-0 text-center lg:px-6 lg:text-left"
+                  >
+                    <div className="bg-linear-to-r from-yellow-500 to-amber-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl">
+                      {stat.value}
+                    </div>
+                    <div className="mt-1 text-xs text-neutral-600 sm:text-sm">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -170,18 +179,6 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* Floating Elements */}
-              <div className="absolute -left-4 top-1/4 animate-float rounded-xl border border-neutral-200 bg-white p-3 shadow-lg md:-left-8">
-                <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-100">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
-                  </div>
-                  <div className="text-xs">
-                    <div className="font-medium text-neutral-900">ส่งมอบงานแล้ว</div>
-                    <div className="text-neutral-500">เมื่อวาน</div>
-                  </div>
-                </div>
-              </div>
 
               <div className="absolute -right-4 bottom-1/4 animate-float rounded-xl border border-neutral-200 bg-white p-3 shadow-lg md:-right-8" style={{ animationDelay: '1s' }}>
                 <div className="flex items-center gap-2">
