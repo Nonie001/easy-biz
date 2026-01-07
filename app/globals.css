@@ -89,3 +89,23 @@ html {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+/* Mobile-friendly typography and media */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p, li {
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make tables and pre blocks scrollable on small screens */
+.overflow-x-auto, .prose table, .prose pre {
+  overflow-x: auto;
+}

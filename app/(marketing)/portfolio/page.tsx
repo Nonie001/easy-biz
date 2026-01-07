@@ -108,7 +108,7 @@ export default function PortfolioPage() {
           {portfolioItems.map((item) => (
             <Card key={item.id} className="group overflow-hidden">
               {/* Image placeholder */}
-              <div className="aspect-video bg-gradient-to-br from-neutral-100 to-neutral-200 flex items-center justify-center -mx-6 -mt-6 mb-4">
+              <div className="aspect-video bg-linear-to-br from-neutral-100 to-neutral-200 flex items-center justify-center -mx-6 -mt-6 mb-4">
                 <span className="text-4xl font-bold text-neutral-300">
                   {item.category}
                 </span>

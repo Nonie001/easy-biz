@@ -73,7 +73,7 @@ export default function BlogPage() {
         {/* Featured Post */}
         <div className="mt-12">
           <Card className="overflow-hidden lg:flex">
-            <div className="aspect-video bg-gradient-to-br from-yellow-100 to-yellow-200 lg:aspect-auto lg:w-2/5 flex items-center justify-center">
+            <div className="aspect-video bg-linear-to-br from-yellow-100 to-yellow-200 lg:aspect-auto lg:w-2/5 flex items-center justify-center">
               <span className="text-6xl font-bold text-yellow-400/50">BLOG</span>
             </div>
             <div className="p-6 lg:w-3/5 lg:p-8">
@@ -111,7 +111,7 @@ export default function BlogPage() {
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {blogPosts.slice(1).map((post) => (
             <Card key={post.slug} className="group">
-              <div className="aspect-video bg-gradient-to-br from-neutral-100 to-neutral-200 -mx-6 -mt-6 mb-4 flex items-center justify-center">
+              <div className="aspect-video bg-linear-to-br from-neutral-100 to-neutral-200 -mx-6 -mt-6 mb-4 flex items-center justify-center">
                 <span className="text-3xl font-bold text-neutral-300">
                   {post.category}
                 </span>
