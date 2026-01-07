@@ -95,9 +95,9 @@ export function Footer() {
                 02-xxx-xxxx
               </a>
               <p className="flex items-center gap-2 text-neutral-600">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-100">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-100">
                   <MapPin className="h-4 w-4" />
-                </div>
+                </span>
                 กรุงเทพมหานคร, ประเทศไทย
               </p>
             </div>
